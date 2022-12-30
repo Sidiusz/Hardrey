@@ -39,28 +39,19 @@ public class SaveManager : MonoBehaviour
 
     public void LoadGame()
     {
-        if (!File.Exists(savePath))
-        {
-            Debug.LogError("Save file not found at " + savePath);
-            return;
-        }
+        if (!File.Exists(savePath)) { Debug.LogError("Save file not found at " + savePath); return; }
 
         string saveData = File.ReadAllText(savePath);
         JsonUtility.FromJsonOverwrite(saveData, this);
 
-        if (SceneManager.GetActiveScene().name == saveSceneName)
-        {
-            transform.position = savePosition;
-        }
-        else
-        {
+        if (SceneManager.GetActiveScene().name == saveSceneName) {
+            transform.position = savePosition; }
+        else {
             SceneManager.LoadScene(saveSceneName);
-            transform.position = savePosition;
-        }
+            transform.position = savePosition; }
 
         playerController.controlDisabled = false;
-        deathPanel.SetActive(false);
-    }
+        deathPanel.SetActive(false); }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -70,7 +61,6 @@ public class SaveManager : MonoBehaviour
             deathPanel.SetActive(true);
             deathCount++;
             deathCountText.text = deathCount.ToString();
-            SaveGame();
         }
         else if (other.tag == "SavePoint")
         {
@@ -81,7 +71,7 @@ public class SaveManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F9))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             LoadGame();
         }
