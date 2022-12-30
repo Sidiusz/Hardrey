@@ -1177,6 +1177,7 @@ GameObject:
   - component: {fileID: 1872879491}
   - component: {fileID: 1872879490}
   - component: {fileID: 1872879506}
+  - component: {fileID: 6061635242964897436}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1199,7 +1200,7 @@ Transform:
   - {fileID: 1549240788}
   - {fileID: 1062056814}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6755545938645163271
 SpriteRenderer:
@@ -1390,3 +1391,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0047562122, y: -0.15410566}
   m_Size: {x: 0.22371721, y: 0.3664074}
   m_Direction: 0
+--- !u!114 &6061635242964897436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6755545938645163517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 641d3c1d086550b4486c4112144d88f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgrounds:
+  - {fileID: 0}
+  parallaxScale: 0
+  parallaxReductionFactor: 0
+  smoothing: 0

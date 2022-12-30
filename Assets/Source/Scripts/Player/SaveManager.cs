@@ -24,7 +24,6 @@ public class SaveManager : MonoBehaviour
         {
             savedPosition = transform.position;
             savePanel.GetComponent<Animator>().SetTrigger("Show");
-            SaveGame();
         }
         else if (other.CompareTag("DangerZone"))
         {
