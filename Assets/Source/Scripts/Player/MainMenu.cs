@@ -1,42 +1,56 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using System.Collections;
 public class MainMenu : MonoBehaviour
 {
     public string sceneToLoad;
+    public Image fadingScreen;
     public GameObject loadingScreen;
-    public AudioSource loadingSound;
+    public AudioClip startButtonSound;
+    public AudioClip exitButtonSound;
+    public AudioSource audioSource;
     public float fadeDuration = 1f;
+    public float alphacol = 1f;
 
-private CanvasGroup canvasGroup;
-    private bool isLoading = false;
+private bool isLoading = false;
 
     private void Start()
     {
-        canvasGroup = loadingScreen.GetComponent<CanvasGroup>();
+        fadingScreen.color = new Color(0f, 0f, 0f, alphacol);
+        loadingScreen.SetActive(false);
     }
 
     private void Update()
     {
         if (isLoading)
         {
-            canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, 1f, fadeDuration * Time.deltaTime);
-            if (canvasGroup.alpha == 1f)
+            fadingScreen.color = Color.Lerp(fadingScreen.color, Color.black, fadeDuration * Time.deltaTime);
+            if (fadingScreen.color.a == 1f)
             {
-                SceneManager.LoadScene(sceneToLoad);
+                loadingScreen.SetActive(true);
+                StartCoroutine(FakeLoad());
             }
         }
     }
 
+    IEnumerator FakeLoad()
+    {
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadSceneAsync(sceneToLoad);
+    }
+
     public void StartGame()
     {
-        loadingScreen.SetActive(true);
-        loadingSound.Play();
+        fadingScreen.gameObject.SetActive(true);
+        audioSource.PlayOneShot(startButtonSound);
         isLoading = true;
     }
 
     public void ExitGame()
     {
-        Application.Quit();
+        fadingScreen.gameObject.SetActive(true);
+        audioSource.PlayOneShot(exitButtonSound);
+        isLoading = true;
     }
 }

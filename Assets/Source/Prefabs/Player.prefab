@@ -819,37 +819,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &1549240787
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1549240788}
-  m_Layer: 7
-  m_Name: Bullet Spawn Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1549240788
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1549240787}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.22, y: -0.213, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6755545938645163268}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1549861572
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,7 +964,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C\u0441\u044F \u043D\u0430
     \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0439 \u0447\u0435\u043A\u043F\u043E\u0438\u043D\u0442
-    - F9"
+    - R"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 74a2c396fc6f4b2478590cede1866abe, type: 2}
   m_sharedMaterial: {fileID: 624551014852450955, guid: 74a2c396fc6f4b2478590cede1866abe, type: 2}
@@ -1197,10 +1166,9 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1549240788}
   - {fileID: 1062056814}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6755545938645163271
 SpriteRenderer:
@@ -1331,12 +1299,12 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 512
-  moveSpeed: 2.5
-  jumpForce: 5
+  moveSpeed: 3
+  jumpForce: 6
   initialJumps: 1
   wallSlideSpeed: 0.2
   wallJumpWindow: 0.3
-  wallJumpHeight: 6
+  wallJumpHeight: 10
   canAirJump: 0
   jumpsLeft: 0
   controlDisabled: 0
