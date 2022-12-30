@@ -1199,7 +1199,7 @@ Transform:
   - {fileID: 1549240788}
   - {fileID: 1062056814}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6755545938645163271
 SpriteRenderer:
@@ -1351,14 +1351,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327846331fb63b540856569cb9e847a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveSceneName: 
-  savePosition: {x: 0, y: 0, z: 0}
+  saveFileName: save.txt
   deathPanel: {fileID: 1519442356}
   savePanel: {fileID: 4517637015357515337}
-  savePanelAnimator: {fileID: 8881995862401355241}
-  playerController: {fileID: 1872879491}
   deathCountText: {fileID: 349176342}
-  saveFileName: save.txt
 --- !u!70 &1872879506
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

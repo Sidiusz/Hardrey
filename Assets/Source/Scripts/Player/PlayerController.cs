@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(movement.x, rb.velocity.y - 0.1f);
             }
 
-            if (Input.GetButtonDown("Jump") && (jumpsLeft > 0 || (isTouchingWall)))
+            if (Input.GetButtonDown("Jump") && (jumpsLeft > 0 || (isTouchingWall) || (canAirJump)))
             {
                 if (isOnGround)
                 {
@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
                 else if (isTouchingWall)
                 {
                     rb.velocity = new Vector2(2f * facingDirection * -1, wallJumpHeight);
+                }
+                else if (canAirJump)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    canAirJump = false;
                 }
             }
 

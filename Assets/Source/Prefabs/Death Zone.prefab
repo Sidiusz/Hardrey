@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1924443847911741318}
   m_Layer: 0
   m_Name: Death Zone
-  m_TagString: DangerousObject
+  m_TagString: DangerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,79 +1,79 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro;
 using System.IO;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class SaveManager : MonoBehaviour
 {
-    public string saveSceneName;
-    public Vector3 savePosition;
+    public string saveFileName;
     public GameObject deathPanel;
     public GameObject savePanel;
-    public Animator savePanelAnimator;
-    public PlayerController playerController;
     public TMP_Text deathCountText;
 
     private int deathCount;
-    public string saveFileName = "save.txt";
-    private string savePath;
+    private Vector3 savedPosition;
 
     private void Start()
     {
-        savePath = Application.persistentDataPath + "/" + saveFileName;
         LoadGame();
-        Debug.Log(Application.persistentDataPath + "/save.txt");
     }
 
-    public void SaveGame()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        saveSceneName = SceneManager.GetActiveScene().name;
-        savePosition = transform.position;
-        deathCount = PlayerPrefs.GetInt("deathCount", 0);
-        deathCountText.text = deathCount.ToString();
-
-        string saveData = JsonUtility.ToJson(this, true);
-        File.WriteAllText(savePath, saveData);
-    }
-
-    public void LoadGame()
-    {
-        if (!File.Exists(savePath)) { Debug.LogError("Save file not found at " + savePath); return; }
-
-        string saveData = File.ReadAllText(savePath);
-        JsonUtility.FromJsonOverwrite(saveData, this);
-
-        if (SceneManager.GetActiveScene().name == saveSceneName) {
-            transform.position = savePosition; }
-        else {
-            SceneManager.LoadScene(saveSceneName);
-            transform.position = savePosition; }
-
-        playerController.controlDisabled = false;
-        deathPanel.SetActive(false); }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "DangerousObject")
+        if (other.CompareTag("SavePoint"))
         {
-            playerController.controlDisabled = true;
-            deathPanel.SetActive(true);
-            deathCount++;
-            deathCountText.text = deathCount.ToString();
-        }
-        else if (other.tag == "SavePoint")
-        {
+            savedPosition = transform.position;
+            savePanel.GetComponent<Animator>().SetTrigger("Show");
             SaveGame();
-            savePanelAnimator.SetTrigger("Show");
+        }
+        else if (other.CompareTag("DangerZone"))
+        {
+            deathPanel.SetActive(true);
+            GetComponent<PlayerController>().controlDisabled = true;
+            deathCount++;
+            SaveGame();
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
             LoadGame();
         }
+    }
+
+    private void SaveGame()
+    {
+        string saveData = JsonUtility.ToJson(new SaveData(savedPosition, deathCount));
+        File.WriteAllText(Application.persistentDataPath + "/" + saveFileName, saveData);
+    }
+
+    private void LoadGame()
+    {
+        if (File.Exists(Application.persistentDataPath + "/" + saveFileName))
+        {
+            string saveData = File.ReadAllText(Application.persistentDataPath + "/" + saveFileName);
+            SaveData data = JsonUtility.FromJson<SaveData>(saveData);
+            savedPosition = data.savedPosition;
+            deathCount = data.deathCount;
+            deathCountText.text = deathCount.ToString();
+            transform.position = savedPosition;
+            GetComponent<PlayerController>().controlDisabled = false;
+            deathPanel.SetActive(false);
+        }
+    }
+}
+
+[System.Serializable]
+class SaveData
+{
+    public Vector3 savedPosition;
+    public int deathCount;
+
+public SaveData(Vector3 savedPosition, int deathCount)
+    {
+        this.savedPosition = savedPosition;
+        this.deathCount = deathCount;
     }
 }
