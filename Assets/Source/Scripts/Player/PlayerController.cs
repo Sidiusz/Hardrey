@@ -16,10 +16,9 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private new Collider2D collider;
-    private int jumpsLeft;
+    public int jumpsLeft;
     private PlayerAnimationController playerAnimationController;
     private int facingDirection = 1;
-    //private float wallJumpWindowCounter;
     public bool controlDisabled = false;
 
     private void Start()
