@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.IO;
 
 public class SaveManager : MonoBehaviour
 {
@@ -10,19 +11,40 @@ public class SaveManager : MonoBehaviour
     public Vector3 savePosition;
     public GameObject deathPanel;
     public GameObject savePanel;
+    public Animator savePanelAnimator;
     public PlayerController playerController;
     public TMP_Text deathCountText;
 
     private int deathCount;
+    private string savePath;
+
+    private void Start()
+    {
+        savePath = Application.persistentDataPath + "/save.txt";
+    }
 
     public void SaveGame()
     {
         saveSceneName = SceneManager.GetActiveScene().name;
         savePosition = transform.position;
+        deathCount = PlayerPrefs.GetInt("deathCount", 0);
+        deathCountText.text = deathCount.ToString();
+
+        string saveData = JsonUtility.ToJson(this, true);
+        File.WriteAllText(savePath, saveData);
     }
 
     public void LoadGame()
     {
+        if (!File.Exists(savePath))
+        {
+            Debug.LogError("Save file not found at " + savePath);
+            return;
+        }
+
+        string saveData = File.ReadAllText(savePath);
+        JsonUtility.FromJsonOverwrite(saveData, this);
+
         if (SceneManager.GetActiveScene().name == saveSceneName)
         {
             transform.position = savePosition;
@@ -35,9 +57,6 @@ public class SaveManager : MonoBehaviour
 
         playerController.controlDisabled = false;
         deathPanel.SetActive(false);
-
-        deathCount = PlayerPrefs.GetInt("deathCount", 0);
-        deathCountText.text = deathCount.ToString();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -48,12 +67,13 @@ public class SaveManager : MonoBehaviour
             deathPanel.SetActive(true);
             deathCount++;
             deathCountText.text = deathCount.ToString();
-            PlayerPrefs.SetInt("deathCount", deathCount);
+            SaveGame();
         }
         else if (other.tag == "SavePoint")
         {
             SaveGame();
             savePanel.SetActive(true);
+            savePanelAnimator.SetTrigger("Show");
         }
     }
 
