@@ -12,12 +12,14 @@ public class PlayerController : MonoBehaviour
     public float wallJumpWindow = 0.1f;
     public float wallJumpHeight = 10f;
 
+    public bool canAirJump;
+
     private Rigidbody2D rb;
     private new Collider2D collider;
     private int jumpsLeft;
     private PlayerAnimationController playerAnimationController;
     private int facingDirection = 1;
-    private float wallJumpWindowCounter;
+    //private float wallJumpWindowCounter;
     public bool controlDisabled = false;
 
     private void Start()

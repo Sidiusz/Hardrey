@@ -16,11 +16,14 @@ public class SaveManager : MonoBehaviour
     public TMP_Text deathCountText;
 
     private int deathCount;
+    public string saveFileName = "save.txt";
     private string savePath;
 
     private void Start()
     {
-        savePath = Application.persistentDataPath + "/save.txt";
+        savePath = Application.persistentDataPath + "/" + saveFileName;
+        LoadGame();
+        Debug.Log(Application.persistentDataPath + "/save.txt");
     }
 
     public void SaveGame()
@@ -72,7 +75,6 @@ public class SaveManager : MonoBehaviour
         else if (other.tag == "SavePoint")
         {
             SaveGame();
-            savePanel.SetActive(true);
             savePanelAnimator.SetTrigger("Show");
         }
     }

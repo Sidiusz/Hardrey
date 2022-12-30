@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DangerousObject
   - SavePoint
+  - JumpBoostTrigger
   layers:
   - Default
   - TransparentFX
