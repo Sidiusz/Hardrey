@@ -1100,7 +1100,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 500}
   m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3107263689915413720
@@ -1193,7 +1193,7 @@ Transform:
   m_GameObject: {fileID: 6755545938645163517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.079, y: -3.526, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1549240788}
@@ -1336,6 +1336,8 @@ MonoBehaviour:
   wallSlideSpeed: 0.2
   wallJumpWindow: 0.3
   wallJumpHeight: 6
+  canAirJump: 0
+  jumpsLeft: 0
   controlDisabled: 0
 --- !u!114 &1872879490
 MonoBehaviour:
@@ -1356,6 +1358,7 @@ MonoBehaviour:
   savePanelAnimator: {fileID: 8881995862401355241}
   playerController: {fileID: 1872879491}
   deathCountText: {fileID: 349176342}
+  saveFileName: save.txt
 --- !u!70 &1872879506
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
