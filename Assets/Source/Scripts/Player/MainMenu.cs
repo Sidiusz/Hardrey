@@ -13,12 +13,13 @@ public class MainMenu : MonoBehaviour
     public float fadeDuration = 1f;
     public float alphacol = 1f;
 
-private bool isLoading = false;
+    private bool isLoading = false;
 
     private void Start()
     {
-        fadingScreen.color = new Color(0f, 0f, 0f, alphacol);
         loadingScreen.SetActive(false);
+        fadingScreen.color = new Color(0f, 0f, 0f, alphacol);
+        
     }
 
     private void Update()
@@ -26,7 +27,7 @@ private bool isLoading = false;
         if (isLoading)
         {
             fadingScreen.color = Color.Lerp(fadingScreen.color, Color.black, fadeDuration * Time.deltaTime);
-            if (fadingScreen.color.a == 1f)
+            if (fadingScreen.color.a >= 0.5f)
             {
                 loadingScreen.SetActive(true);
                 StartCoroutine(FakeLoad());
@@ -36,7 +37,7 @@ private bool isLoading = false;
 
     IEnumerator FakeLoad()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadSceneAsync(sceneToLoad);
     }
 

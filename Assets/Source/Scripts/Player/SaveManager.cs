@@ -23,6 +23,7 @@ public class SaveManager : MonoBehaviour
         if (other.CompareTag("SavePoint"))
         {
             savedPosition = transform.position;
+            SaveGame();
             savePanel.GetComponent<Animator>().SetTrigger("Show");
         }
         else if (other.CompareTag("DangerZone"))
@@ -70,7 +71,7 @@ class SaveData
     public Vector3 savedPosition;
     public int deathCount;
 
-public SaveData(Vector3 savedPosition, int deathCount)
+    public SaveData(Vector3 savedPosition, int deathCount)
     {
         this.savedPosition = savedPosition;
         this.deathCount = deathCount;
