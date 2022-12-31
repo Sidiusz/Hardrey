@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [Space(10)]
     private PlayerAnimationController playerAnimationController;
 
-private void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
@@ -47,7 +47,7 @@ private void Start()
             bool isTouchingWall = wallLeftCollider.IsTouchingLayers(wallLayer) || wallRightCollider.IsTouchingLayers(wallLayer); // Check ifcolliding with a wall using the left or right wall colliders
             bool canMoveHorizontally = !isTouchingWall || verticalInput > 0 || (horizontalInput > 0 && transform.position.x > collider.bounds.center.x) || (horizontalInput < 0 && transform.position.x < collider.bounds.center.x);
 
-        if (isOnGround)
+            if (isOnGround)
             {
                 jumpsLeft = initialJumps;
                 rb.velocity = movement;
@@ -77,15 +77,13 @@ private void Start()
                 }
             }
 
-        if (horizontalInput != 0)
+            if (horizontalInput != 0)
             {
                 facingDirection = (horizontalInput > 0) ? 1 : -1;
             }
 
             playerAnimationController.UpdateAnimation(movement, Mathf.Abs(horizontalInput), isTouchingWall);
         }
-
-
     }
 
     public void ResetVelocity()

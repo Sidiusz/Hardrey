@@ -831,9 +831,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1872879490, guid: 3d5a332d3b228644f85dafa7fa45e846, type: 3}
-      propertyPath: saveFileName
-      value: save.txt
+    - target: {fileID: 1872879491, guid: 3d5a332d3b228644f85dafa7fa45e846, type: 3}
+      propertyPath: wallJumpHeight
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1872879491, guid: 3d5a332d3b228644f85dafa7fa45e846, type: 3}
+      propertyPath: wallSlideSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6755545938645163268, guid: 3d5a332d3b228644f85dafa7fa45e846, type: 3}
       propertyPath: m_RootOrder
@@ -841,11 +845,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6755545938645163268, guid: 3d5a332d3b228644f85dafa7fa45e846, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.92
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 6755545938645163268, guid: 3d5a332d3b228644f85dafa7fa45e846, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.91
+      value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: 6755545938645163268, guid: 3d5a332d3b228644f85dafa7fa45e846, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5507,11 +5511,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8920658577477820846, guid: 71b640d1d6edbbf46a4140cb9efb8512, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.86
+      value: -3.69
       objectReference: {fileID: 0}
     - target: {fileID: 8920658577477820846, guid: 71b640d1d6edbbf46a4140cb9efb8512, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.15
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8920658577477820846, guid: 71b640d1d6edbbf46a4140cb9efb8512, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5523,11 +5527,11 @@ PrefabInstance:
       objectReference: {fileID: 1702891493}
     - target: {fileID: 8920658577587754655, guid: 71b640d1d6edbbf46a4140cb9efb8512, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.86
+      value: -3.69
       objectReference: {fileID: 0}
     - target: {fileID: 8920658577587754655, guid: 71b640d1d6edbbf46a4140cb9efb8512, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.15
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8920658577587754655, guid: 71b640d1d6edbbf46a4140cb9efb8512, type: 3}
       propertyPath: m_LocalPosition.z
