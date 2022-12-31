@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327846331fb63b540856569cb9e847a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveFileName: save.savdata
+  saveFileName: save.txt
   deathPanel: {fileID: 1519442356}
   savePanel: {fileID: 4517637015357515337}
   deathCountText: {fileID: 349176342}
